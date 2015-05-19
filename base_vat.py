@@ -8,24 +8,22 @@ from bs4 import BeautifulSoup
 import StringIO
 
 import string
-from openerp import tools, api
 from openerp.osv import osv, fields
 from openerp.tools.translate import _
 
 
-class res_partner(osv.Model):
+class res_partner(osv.osv):
     _inherit = 'res.partner'
-	
-    @api.multi
-    def vat_change(self, vat):
+    
+    def vat_change(self, cr, uid, ids, vat, context=None):
 
         if vat:
             if len(vat)>3:
-            	vat_type=vat[0:3]
-            	
+                vat_type=vat[0:3]
+                
                 tdireccion=""
                 tnombre=""
-        	
+            
                 if vat_type and vat_type.upper() == 'PED':
                     #DNI
                     return True
@@ -37,15 +35,15 @@ class res_partner(osv.Model):
                     
                     if len(vat) != 14:
                         raise osv.except_osv(
-                		    _('Error'),
-                		    _(vat+"eL RUC incorrecto"))
+                            _('Error'),
+                            _(vat+"eL RUC incorrecto"))
                     vat = vat[3:14]
                     try:
                         int(vat)
                     except ValueError:
                         raise osv.except_osv(
-                		    _('Error'),
-                		    _(vat+"eL RUC debe contener solo numeros enteros"))
+                            _('Error'),
+                            _(vat+"eL RUC debe contener solo numeros enteros"))
                                  
                     for f in range(0,10):
                         sum += int(factor[f]) * int(vat[f])
@@ -115,11 +113,11 @@ class res_partner(osv.Model):
                         else:
                             raise osv.except_osv(
                                 _('Error'),
-                                _('Ruc captcha no reconocido intente nuevamente'))
+                                _('Captcha no reconocido intente nuevamente'))
                     else:
                         raise osv.except_osv(
                             _('Error'),
-                            _(vat+"El RUC ingresado no es correcto"))
+                            _(vat+" El RUC ingresado no es correcto"))
 
                 else:
                     return False
