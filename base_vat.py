@@ -25,6 +25,7 @@ class res_partner(osv.Model):
             	
                 tdireccion=""
                 tnombre=""
+                tcomp=False
         	
                 if vat_type and vat_type.upper() == 'PED':
                     #DNI
@@ -40,6 +41,10 @@ class res_partner(osv.Model):
                 		    _('Error'),
                 		    _(vat+"eL RUC incorrecto"))
                     vat = vat[3:14]
+                    
+                    if vat[0:2]=='20':
+                        tcomp=True
+                    
                     try:
                         int(vat)
                     except ValueError:
@@ -109,7 +114,7 @@ class res_partner(osv.Model):
                                 #    _(tdireccion))
                             
                                 return {
-                                    'value': {'name': tnombre,'street': tdireccion}
+                                    'value': {'is_company': tcomp, 'name': tnombre,'street': tdireccion}
                                 }
 
                         else:
