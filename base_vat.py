@@ -114,7 +114,7 @@ class res_partner(osv.Model):
                                 #    _(tdireccion))
                             
                                 return {
-                                    'value': {'is_company': tcomp, 'name': tnombre,'street': tdireccion}
+                                    'value': {'is_company': tcomp, 'name': tnombre,'street': tdireccion, 'vat_subjected': True}
                                 }
 
                         else:

@@ -12,11 +12,15 @@
     'description': """
     Este addon valida el ruc de los clientes con la SUNAT
 
+    Video de muestra:
+    
+    https://youtu.be/RXv5CkkGEtc
+    
     Librerias necesarias:
 
     sudo apt-get install tesseract-ocr tesseract-ocr-eng python-imaging python-pip python-bs4 && sudo pip install pytesseract
     
- 
+    
     """,
     'author': 'Alexander Cuellar Morales alexcuellar@live.com',
     'depends': ['base_vat'],
