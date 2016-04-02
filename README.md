@@ -1,5 +1,5 @@
 # l10n_pe_ruc
-Este addon valida el ruc de los clientes ODOO con la SUNAT  
+Este addon valida el ruc de los clientes ODOO con la SUNAT  tambien validad el DNI con la sunat
 
 Librerias necesarias:  
 

@@ -4,4 +4,4 @@
 #    Alexader Cuellar Morales
 ##############################################################################
 
-import model
+import res_partner
