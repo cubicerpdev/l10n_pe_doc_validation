@@ -85,11 +85,11 @@ class res_partner(models.Model):
                 error_captcha="Ingrese el código que aparece en la imagen"
                 error_dni="El DNI N°"
                 if error_captcha==name.strip().encode('utf-8'):
-                    self.vat_change(vat)
+                    return self.vat_change(vat)
                 elif error_dni==name.strip().encode('utf-8'):
                     return osv.except_osv(
                         _('Error'),
-                        _('El DNI ingresado es incorrecto')) 
+                        _('the DNI entered is incorrect')) 
                 res['name'] = name.strip()
                 return {'value': res}
             elif vat_type and vat_type.upper() == 'R':
@@ -117,7 +117,7 @@ class res_partner(models.Model):
                 if not int(vat[10]) == dig_check:
                     raise osv.except_osv(
                         _('Error'),
-                        _('El ruc ingresado es incorrecto')) 
+                        _('the RUC entered is incorrect')) 
                 for i in range(10):
                     consuta, captcha_val= self._get_captcha(vat_type.upper())
                     if not consuta:
